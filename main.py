@@ -1,4 +1,5 @@
 import mechanicalsoup
+import requests
 
 def westernunion():
     browser = mechanicalsoup.StatefulBrowser()
@@ -28,5 +29,11 @@ def remitly():
     if rates:
         print(rates.text)
 
+def forex():
+    print("****** FOREX RATES *******")
+    r = requests.get('http://free.currencyconverterapi.com/api/v5/convert?q=USD_INR&compact=y')
+    print(r.json()['USD_INR']['val'])
+
 xoom()
 remitly()
+forex()
